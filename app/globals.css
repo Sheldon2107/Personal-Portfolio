@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #F7F5F0;
+  background-image:
+    linear-gradient(rgba(28, 36, 48, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(28, 36, 48, 0.025) 1px, transparent 1px);
+  background-size: 32px 32px;
+  color: #1C2430;
+}
+
+::selection {
+  background-color: #E9CFA2;
+  color: #1C2430;
+}
+
+/* Focus visibility for keyboard nav — kept visible everywhere per accessibility floor */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #B8802F;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.status-dot {
+  position: relative;
+}
+.status-dot::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  opacity: 0;
+  animation: pulse-ring 2.4s ease-out infinite;
+}
+@keyframes pulse-ring {
+  0% { opacity: 0.5; transform: scale(0.8); }
+  80% { opacity: 0; transform: scale(1.6); }
+  100% { opacity: 0; transform: scale(1.6); }
+}
+
+.grain-corner {
+  background-image: radial-gradient(circle, rgba(28,36,48,0.06) 1px, transparent 1px);
+  background-size: 6px 6px;
+}
