@@ -7,13 +7,13 @@ const resendApiKey = process.env.RESEND_API_KEY;
 
 // Where contact form messages get delivered. Set CONTACT_TO_EMAIL in your
 // env — falls back to the address in lib/content.ts if not set.
-const toEmail = process.env.CONTACT_TO_EMAIL || "hello@donden.my";
+const toEmail = process.env.CONTACT_TO_EMAIL || "sheldonstephen214@gmail.com";
 
 // Resend's shared test sender. Works immediately with zero setup, but only
 // delivers to the email you signed up to Resend with. Once you verify your
 // own domain (e.g. donden.my) in the Resend dashboard, switch this to
 // something like "Don's Portfolio <hello@donden.my>" — see README.md.
-const fromEmail = process.env.CONTACT_FROM_EMAIL || "onboarding@resend.dev";
+const fromEmail = process.env.CONTACT_FROM_EMAIL || "contact@donden.my";
 
 export async function POST(request: Request) {
   if (!resendApiKey) {
