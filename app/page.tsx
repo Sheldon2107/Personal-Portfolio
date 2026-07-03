@@ -23,19 +23,43 @@ export default function Home() {
   const ActivePanel = PANELS[active];
 
   return (
-    <main className="flex min-h-screen flex-col lg:flex-row">
+    <main className="relative flex min-h-screen flex-col lg:flex-row bg-[#f8f9fc] text-gray-900 overflow-hidden">
+
+      {/* ================= GRID BACKGROUND ================= */}
+      <div
+        className="
+          pointer-events-none absolute inset-0 -z-10
+          bg-[linear-gradient(to_right,rgba(0,0,0,0.05)_1px,transparent_1px),
+              linear-gradient(to_bottom,rgba(0,0,0,0.05)_1px,transparent_1px)]
+          bg-[size:42px_42px]
+        "
+      />
+
+      {/* soft glow overlay (makes it more premium) */}
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-white/70 via-transparent to-white/60" />
+
+      {/* ================= SIDEBAR ================= */}
       <Sidebar active={active} onChange={setActive} />
+
+      {/* ================= MAIN CONTENT ================= */}
       <section className="flex-1 px-6 py-12 sm:px-10 lg:px-16 lg:py-16">
         <div
           key={active}
-          className="mx-auto max-w-3xl animate-[fadein_0.3s_ease]"
+          className="
+            mx-auto max-w-3xl
+            animate-[fadein_0.35s_ease]
+          "
         >
-          <ActivePanel />
+          <div className="rounded-2xl bg-white/80 backdrop-blur-md border border-gray-200 shadow-sm p-6 sm:p-8">
+            <ActivePanel />
+          </div>
         </div>
       </section>
+
+      {/* ================= ANIMATION ================= */}
       <style>{`
         @keyframes fadein {
-          from { opacity: 0; transform: translateY(4px); }
+          from { opacity: 0; transform: translateY(6px); }
           to { opacity: 1; transform: translateY(0); }
         }
       `}</style>
