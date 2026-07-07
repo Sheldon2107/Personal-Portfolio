@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Sidebar, { TabId } from "@/components/Sidebar";
+
 import Overview from "@/components/sections/Overview";
 import Experience from "@/components/sections/Experience";
 import Projects from "@/components/sections/Projects";
@@ -23,46 +24,44 @@ export default function Home() {
   const ActivePanel = PANELS[active];
 
   return (
-    <main className="relative flex min-h-screen flex-col lg:flex-row bg-[#f8f9fc] text-gray-900 overflow-hidden">
+    <main className="relative flex min-h-screen flex-col overflow-hidden bg-paper text-ink lg:flex-row">
 
-      {/* ================= GRID BACKGROUND ================= */}
+      {/* Background Grid */}
       <div
         className="
           pointer-events-none absolute inset-0 -z-10
-          bg-[linear-gradient(to_right,rgba(0,0,0,0.05)_1px,transparent_1px),
-              linear-gradient(to_bottom,rgba(0,0,0,0.05)_1px,transparent_1px)]
-          bg-[size:42px_42px]
+          bg-[linear-gradient(to_right,rgba(35,48,66,0.04)_1px,transparent_1px),
+          linear-gradient(to_bottom,rgba(35,48,66,0.04)_1px,transparent_1px)]
+          bg-[size:40px_40px]
         "
       />
 
-      {/* soft glow overlay (makes it more premium) */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-white/70 via-transparent to-white/60" />
+      {/* Warm Glow */}
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(184,128,47,0.15),transparent_65%)]" />
 
-      {/* ================= SIDEBAR ================= */}
+      {/* Sidebar */}
       <Sidebar active={active} onChange={setActive} />
 
-      {/* ================= MAIN CONTENT ================= */}
-      <section className="flex-1 px-6 py-12 sm:px-10 lg:px-16 lg:py-16">
+      {/* Content */}
+      <section className="flex-1 px-6 py-10 lg:px-16 lg:py-14">
         <div
           key={active}
           className="
-            mx-auto max-w-3xl
-            animate-[fadein_0.35s_ease]
+            mx-auto
+            max-w-4xl
+            rounded-3xl
+            border
+            border-line
+            bg-panel/90
+            backdrop-blur-md
+            shadow-soft
+            p-8
+            animate-fadein
           "
         >
-          <div className="rounded-2xl bg-white/80 backdrop-blur-md border border-gray-200 shadow-sm p-6 sm:p-8">
-            <ActivePanel />
-          </div>
+          <ActivePanel />
         </div>
       </section>
-
-      {/* ================= ANIMATION ================= */}
-      <style>{`
-        @keyframes fadein {
-          from { opacity: 0; transform: translateY(6px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
     </main>
   );
 }

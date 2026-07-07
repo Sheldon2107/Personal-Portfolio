@@ -1,33 +1,69 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./lib/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+
   theme: {
     extend: {
       colors: {
-        paper: "#FAFAF9",
-        surface: "#FFFFFF",
-        ink: "#18181B",
-        muted: "#71717A",
-        border: "#E4E4E7",
-        accent: "#5B5FEF",
-        "accent-soft": "rgba(91, 95, 239, 0.08)",
+        // Main palette
+        paper: "#F7F5F0",
+        panel: "#FFFDF9",
+        surface: "#FCFAF5",
+
+        // Text
+        ink: "#233042",
+        "ink-soft": "#5F6C7B",
+        muted: "#8A8F98",
+
+        // Borders
+        line: "#DDD7CB",
+
+        // Accent
+        amber: "#B8802F",
+        "amber-tint": "#F3E7CF",
+
+        success: "#4B8C62",
       },
+
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "monospace"],
+        body: ["var(--font-body)", "sans-serif"],
+        display: ["var(--font-display)", "sans-serif"],
+        mono: ["var(--font-mono)", "monospace"],
       },
+
+      letterSpacing: {
+        widest2: "0.22em",
+      },
+
+      boxShadow: {
+        soft: "0 12px 40px rgba(35,48,66,0.08)",
+      },
+
+      animation: {
+        fadein: "fadein .35s ease both",
+      },
+
       keyframes: {
         fadein: {
-          from: { opacity: "0", transform: "translateY(8px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
+          from: {
+            opacity: "0",
+            transform: "translateY(8px)",
+          },
+          to: {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
         },
-      },
-      animation: {
-        fadein: "fadein 0.5s cubic-bezier(0.16, 1, 0.3, 1) both",
       },
     },
   },
+
   plugins: [],
 };
+
 export default config;
