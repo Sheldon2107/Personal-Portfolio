@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
 // @ts-expect-error - CSS imports are handled by Next.js
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next"
-import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const display = Space_Grotesk({
   subsets: ["latin"],
